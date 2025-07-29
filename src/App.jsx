@@ -26,4 +26,7 @@ function App() {
   );
 }
 
+console.log(<ClassDemo />);
+console.log(ClassDemo);
+
 export default App;
