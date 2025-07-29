@@ -5,19 +5,25 @@ import "./App.css";
 import EventDemo from "./components/EventDemo/EventDemo";
 import Counter from "./components/Counter/Counter";
 import Todolist from "./components/Todolist/Todolist";
+import ClassDemo from "./components/ClassComponents/ClassDemo";
 //auto complete
 function App() {
-    //const [count, setCount] = useState(0);
-    const handleClick = (name) => {
-        console.log("child button is clicked", name);
-    };
-    return (
-        <>
-            {/* <EventDemo onClickButton={handleClick} /> */}
-            {/* <Counter /> */}
-            <Todolist />
-        </>
-    );
+  const [show, setShow] = useState(true);
+  //const [count, setCount] = useState(0);
+  const handleClick = (name) => {
+    console.log("child button is clicked", name);
+  };
+  return (
+    <>
+      {/* <EventDemo onClickButton={handleClick} /> */}
+      {/* <Counter /> */}
+      <button id="toggle-btn" onClick={() => setShow(!show)}>
+        Toggle show
+      </button>
+      {show && <ClassDemo name={"alice"} age={18} />}
+      <Todolist />
+    </>
+  );
 }
 
 export default App;
