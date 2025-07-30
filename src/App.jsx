@@ -6,6 +6,7 @@ import EventDemo from "./components/EventDemo/EventDemo";
 import Counter from "./components/Counter/Counter";
 import Todolist from "./components/Todolist/Todolist";
 import ClassDemo from "./components/ClassComponents/ClassDemo";
+import CarApp from "./components/ClassComponents/CarApp/CarApp";
 //auto complete
 function App() {
   const [show, setShow] = useState(true);
@@ -17,11 +18,12 @@ function App() {
     <>
       {/* <EventDemo onClickButton={handleClick} /> */}
       {/* <Counter /> */}
-      <button id="toggle-btn" onClick={() => setShow(!show)}>
+      {/* <button id="toggle-btn" onClick={() => setShow(!show)}>
         Toggle show
       </button>
       {show && <ClassDemo name={"alice"} age={18} />}
-      <Todolist />
+      <Todolist /> */}
+      <CarApp />
     </>
   );
 }
