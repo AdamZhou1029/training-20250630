@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-console.log("hello world");
+
 /* 
     controlled component
         2 way data binding
