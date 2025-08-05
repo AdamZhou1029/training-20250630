@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -8,10 +8,15 @@ import Todolist from "./components/Todolist/Todolist";
 import ClassDemo from "./components/ClassComponents/ClassDemo";
 import CarApp from "./components/ClassComponents/CarApp/CarApp";
 import HookDemo from "./components/HookDemo";
+import CounterProvider, { CounterContext } from "./context/CounterContext";
 //auto complete
 function App() {
   const [show, setShow] = useState(true);
   //const [count, setCount] = useState(0);
+
+  const counterContext = useContext(CounterContext);
+  console.log("counter context:", counterContext);
+
   const handleClick = (name) => {
     console.log("child button is clicked", name);
   };
