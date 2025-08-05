@@ -6,9 +6,10 @@ import EventDemo from "./components/EventDemo/EventDemo";
 import Counter from "./components/Counter/Counter";
 import Todolist from "./components/Todolist/Todolist";
 import ClassDemo from "./components/ClassComponents/ClassDemo";
-import CarApp from "./components/ClassComponents/CarApp/CarApp";
+// import CarApp from "./components/ClassComponents/CarApp/CarApp";
 import HookDemo from "./components/HookDemo";
 import CounterProvider, { CounterContext } from "./context/CounterContext";
+import CarApp from "./components/CarApp";
 //auto complete
 function App() {
   const [show, setShow] = useState(true);
@@ -24,13 +25,14 @@ function App() {
     <>
       {/* <EventDemo onClickButton={handleClick} /> */}
       {/* <Counter /> */}
-      <button id="toggle-btn" onClick={() => setShow(!show)}>
+      {/* <button id="toggle-btn" onClick={() => setShow(!show)}>
         Toggle show
-      </button>
+      </button> */}
       {/* {show && <ClassDemo name={"alice"} age={18} />}
       <Todolist /> */}
       {/* <CarApp /> */}
-      {show && <HookDemo />}
+      {/* {show && <HookDemo />} */}
+      <CarApp />
     </>
   );
 }

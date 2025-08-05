@@ -74,43 +74,43 @@ console.log(b); */
 */
 
 const EventDemo = ({ onClickButton }) => {
-    // current value, setter function
-    const [count, setCount] = useState(0);
+  // current value, setter function
+  const [count, setCount] = useState(0);
 
-    console.log(
-        "event demo component is rendering",
-        count, //from react component,1
-        document.querySelector("#count-span")?.innerHTML //from dom, 0
-    );
+  console.log(
+    "event demo component is rendering",
+    count, //from react component,1
+    document.querySelector("#count-span")?.innerHTML //from dom, 0
+  );
 
-    /* const handleClick = () => alert("the button is clicked"); */
-    const handleParentClick = () => {
-        console.log("parent div is clicked");
-    };
+  /* const handleClick = () => alert("the button is clicked"); */
+  const handleParentClick = () => {
+    console.log("parent div is clicked");
+  };
 
-    const handleIncrement = () => {
-        setCount(count + 1);
-    };
-    return (
-        <div /* onClick={handleParentClick} */>
-            {list.map((name) => {
-                return (
-                    <button
-                        key={name}
-                        onClick={() => {
-                            onClickButton(name);
-                        }}
-                    >
-                        {name}
-                    </button>
-                );
-            })}
-            <div>
-                <span id="count-span">{count}</span>
-                <button onClick={handleIncrement}>increment</button>
-            </div>
-        </div>
-    );
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+  return (
+    <div /* onClick={handleParentClick} */>
+      {list.map((name) => {
+        return (
+          <button
+            key={name}
+            onClick={() => {
+              onClickButton(name);
+            }}
+          >
+            {name}
+          </button>
+        );
+      })}
+      <div>
+        <span id="count-span">{count}</span>
+        <button onClick={handleIncrement}>increment</button>
+      </div>
+    </div>
+  );
 };
 
 export default EventDemo;
