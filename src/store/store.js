@@ -40,6 +40,36 @@ const rootReducer = combineReducers({
   carReducer,
 });
 
+const myCreateStore = (reducer, preloadedState) => {
+  const store = {
+    state: preloadedState,
+    callbackFns: [],
+  };
+
+  store.getState = () => {
+    return store.state;
+  };
+
+  store.dispatch = (action) => {
+    store.state = reducer(store.state, action);
+
+    store.callbackFns.forEach((cb) => cb());
+  };
+
+  store.subscribe = (cb) => {
+    store.callbackFns.push(cb);
+
+    // unsubscribe
+    return () => {
+      store.callbackFns.filter((fn) => fn !== cb);
+    };
+  };
+
+  store.dispatch({ type: "@@INIT" });
+
+  return store;
+};
+
 const store = createStore(rootReducer);
 
 export default store;
