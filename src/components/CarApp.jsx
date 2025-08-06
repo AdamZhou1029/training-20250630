@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import InfoCard from "./ClassComponents/CarApp/InfoCard";
 import store from "../store/store";
 import { useDispatch, useSelector } from "react-redux";
+import useMySelector from "../hooks/useMySelector";
+import useMyDispatch from "../hooks/useMyDispatch";
 
 // state: {
 //   car: []
@@ -10,11 +12,15 @@ import { useDispatch, useSelector } from "react-redux";
 // }
 
 const CarApp = () => {
-  const cars = useSelector((state) => state.carReducer);
+  const cars = useSelector((state) => state.carReducer); // selector function
   const dispatch = useDispatch();
-  // console.log(store.getState());
   console.log(cars);
 
+  // our custom redux hook
+  // const cars = useMySelector((state) => state.cars);
+  // console.log(cars);
+
+  // const dispatch = useMyDispatch();
   //   useEffect(()=>{
   // store.subscribe(() => {
   //     console.log(store.getState());
