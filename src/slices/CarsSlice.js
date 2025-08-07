@@ -29,6 +29,15 @@ const carReducer = (state = carInitialValue, action) => {
       console.log("new state", newState);
       return newState;
 
+    case "RESTOCK":
+      return;
+
+    case "ADD_CAR":
+      return;
+
+    case "REMOVE_CAR":
+      return;
+
     default:
       return state;
   }

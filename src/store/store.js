@@ -2,13 +2,17 @@ import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import carReducer from "../slices/CarsSlice";
 import monitorReducerEnhancer from "../enhancers/monitorReducer";
 import logger from "../middlewares/logger";
+import { composeWithDevTools } from "@redux-devtools/extension";
 
 const rootReducer = combineReducers({
   carReducer,
 });
 
 const middlewareEnhancer = applyMiddleware(logger);
-const composedEnhancers = compose(monitorReducerEnhancer, middlewareEnhancer);
+const composedEnhancers = composeWithDevTools(
+  monitorReducerEnhancer,
+  middlewareEnhancer
+);
 
 const store = createStore(rootReducer, undefined, composedEnhancers);
 // const store = myCreateStore(carReducer);
@@ -20,7 +24,12 @@ const myCreateStore = (reducer, preloadedState, enhancer) => {
   };
 
   if (enhancer !== undefined) {
-    enhancer(myCreateStore);
+    const enhancedCreateStore = enhancer(myCreateStore);
+    const enhancedStore = enhancedCreateStore(
+      rootReducer,
+      preloadedState,
+      enhancer
+    );
   }
 
   store.getState = () => {

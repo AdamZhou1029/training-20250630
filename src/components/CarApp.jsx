@@ -4,6 +4,8 @@ import store from "../store/store";
 import { useDispatch, useSelector } from "react-redux";
 import useMySelector from "../hooks/useMySelector";
 import useMyDispatch from "../hooks/useMyDispatch";
+import { sellCar } from "../actions/cars.actions";
+import { fetchInitialCarData, sell } from "../slices/rtkCarsSlice";
 
 // state: {
 //   car: []
@@ -12,9 +14,9 @@ import useMyDispatch from "../hooks/useMyDispatch";
 // }
 
 const CarApp = () => {
-  const cars = useSelector((state) => state.carReducer); // selector function
+  const { cars, loading } = useSelector((state) => state.cars); // selector function
   const dispatch = useDispatch();
-  console.log(cars);
+  console.log("in cars app", cars);
 
   // our custom redux hook
   // const cars = useMySelector((state) => state.cars);
@@ -27,21 +29,30 @@ const CarApp = () => {
   //   });
   //   } ,[])
 
+  useEffect(() => {
+    dispatch(fetchInitialCarData());
+  }, []);
+
   return (
     <div>
       <h3>Car App</h3>
-      <ul style={{ display: "flex", justifyContent: "center", gap: "20px" }}>
-        {cars.map((car) => (
-          <InfoCard
-            key={car.id}
-            car={car}
-            handleSell={(id) => {
-              console.log("handle sell callback");
-              dispatch({ type: "SELL", payload: id });
-            }}
-          />
-        ))}
-      </ul>
+      {loading ? (
+        <div>Loading Car Data...</div>
+      ) : (
+        <ul style={{ display: "flex", justifyContent: "center", gap: "20px" }}>
+          {cars.map((car) => (
+            <InfoCard
+              key={car.id}
+              car={car}
+              handleSell={(id) => {
+                console.log("handle sell callback");
+                // dispatch(sellCar(id)); // action creator
+                dispatch(sell(id));
+              }}
+            />
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
