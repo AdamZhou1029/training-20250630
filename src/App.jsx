@@ -10,6 +10,9 @@ import ClassDemo from "./components/ClassComponents/ClassDemo";
 import HookDemo from "./components/HookDemo";
 import CounterProvider, { CounterContext } from "./context/CounterContext";
 import CarApp from "./components/CarApp";
+import MyRoutes from "./MyRouter/MyRoutes";
+import MyRoute from "./MyRouter/MyRoute";
+import MyLink from "./MyRouter/MyLink";
 //auto complete
 function App() {
   const [show, setShow] = useState(true);
@@ -21,6 +24,7 @@ function App() {
   const handleClick = (name) => {
     console.log("child button is clicked", name);
   };
+
   return (
     <>
       {/* <EventDemo onClickButton={handleClick} /> */}
@@ -32,7 +36,19 @@ function App() {
       <Todolist /> */}
       {/* <CarApp /> */}
       {/* {show && <HookDemo />} */}
-      <CarApp />
+      {/* <CarApp /> */}
+
+      <nav>
+        <MyLink to="/todolist">Todo List</MyLink>
+        <MyLink to="/car">Car App</MyLink>
+        <MyLink to="/counter">Counter</MyLink>
+      </nav>
+
+      <MyRoutes>
+        <MyRoute path="/todolist" element={<Todolist />} />
+        <MyRoute path="/car" element={<CarApp />} />
+        <MyRoute path="/counter" element={<Counter />} />
+      </MyRoutes>
     </>
   );
 }
