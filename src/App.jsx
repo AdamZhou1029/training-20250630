@@ -13,6 +13,7 @@ import CarApp from "./components/CarApp";
 import MyRoutes from "./MyRouter/MyRoutes";
 import MyRoute from "./MyRouter/MyRoute";
 import MyLink from "./MyRouter/MyLink";
+import withCounter from "./hoc/withCounter";
 //auto complete
 function App() {
   const [show, setShow] = useState(true);
